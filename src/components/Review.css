@@ -1,13 +1,43 @@
 .Review {
-    border: 1px solid black;
-    padding: 1rem;
+    border-bottom: 1px solid #ccd3d6;
+    padding: 1rem 0;
 }
 
 .Review-score {
-    background-color: blue;
+    background-color: #0276db;
     color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
+    box-sizing: border-box;
+    width: 50px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    letter-spacing: 1px;
+}
+
+.Review-line {
+    margin: 10px 0;
+}
+
+.Review-line h4 {
+    font-size: 1.1rem;
+    margin: 15px 0;
+    padding: 5px 0;
+    font-weight: bold;
+}
+
+.Review-channel {
+    margin: auto 15px;
+}
+
+.Review-author {
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin: 10px 0 5px;
+}
+
+.Review-date {
+    color: #677b8f;
+    font-size: 0.9rem;
 }
 
 .hidden {

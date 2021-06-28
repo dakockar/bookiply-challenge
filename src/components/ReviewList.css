@@ -3,12 +3,89 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 10px;
-    width: 70%;
+    max-width: 1000px;
+    width: 80%;
     padding: 2rem;
-
+    margin-top: 170px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
-    border: 1px solid red;
-    height: 80vh;
-    overflow: auto;
+    z-index: 100;
+    transition: 0.2s ease-in;
+}
+
+.ReviewList-header h2 {
+    display: inline;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.ReviewList-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 30px;
+}
+
+.ReviewList-Form {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ReviewList-Form > * {
+    margin: 0 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#minScore, #channel {
+    font-size: 1rem;
+    width: 150px;
+}
+
+@media (max-width: 1200px) {
+    .ReviewList {
+        width: 80%;
+    }
+}
+
+@media (max-width: 780px) {
+    .ReviewList {
+        width: 85%;
+    }
+
+    .ReviewList-Form > * {
+        width: 130px;
+        margin: 0;
+    }
+
+    #minScore, #channel {
+        font-size: 0.9rem;
+        width: 110px;
+    }
+}
+
+@media (max-width: 600px) {
+    .ReviewList {
+        width: 90%;
+    }
+
+    .ReviewList-header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 30px;
+    }
+
+    .ReviewList-Form > * {
+        align-items: flex-start;
+    }
+
+    .ReviewList-header h2 {
+        font-size: 1.6rem;
+    }
 }

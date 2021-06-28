@@ -1,7 +1,5 @@
 import React from 'react';
 import "./Review.css"
-import thumbsUp from "../assets/thumb-up.svg";
-import thumbsDown from "../assets/thumb-down.svg";
 
 export default function Review(props) {
     const { review } = props;
@@ -9,30 +7,27 @@ export default function Review(props) {
     const reviewDate = new Date(review.publishedAt)
     const formattedDate = reviewDate.getDate() + " " + months[reviewDate.getMonth() - 1] + " " + reviewDate.getFullYear();
 
-
     return (
         <div className="Review">
-            <div>
-                <span className="Review-score">{review.score}/5</span>
-                <span>{review.channel}</span>
+            <div className="Review-line">
+                <span className="Review-score"><b>{review.score}</b>/5</span>
+                <img className="Review-channel" src={`/assets/${review.channel}.svg`} alt={review.channel} />
             </div>
-            <div>
-                <h2>
-                    {review.headline}
-                </h2>
+            <div className="Review-line">
+                <h4>{review.headline}</h4>
                 <p className={review.positiveFeedback ? "" : "hidden"}>
-                    <img src={thumbsUp} alt="thumbs up icon" /> {review.positiveFeedback}
+                    <img src="/assets/thumb-up.svg" alt="thumbs up icon" /> {review.positiveFeedback}
                 </p>
                 <p className={review.negativeFeedback ? "" : "hidden"}>
-                    <img src={thumbsDown} alt="thumbs down icon" /> {review.negativeFeedback}
+                    <img src="/assets/thumb-down.svg" alt="thumbs down icon" /> {review.negativeFeedback}
                 </p>
-                <p>
+                <p className={review.comment ? "" : "hidden"}>
                     {review.comment}
                 </p>
             </div>
-            <div>
-                <p>{review.author}</p>
-                <p>Reviewed {formattedDate}</p>
+            <div className="Review-line">
+                <p className="Review-author">{review.author}</p>
+                <p className="Review-date">Reviewed {formattedDate}</p>
             </div>
         </div>
     )

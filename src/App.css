@@ -2,9 +2,113 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   margin: 0 auto;
+  padding-bottom: 80px;
+  color: #173753;
+  background-color: #f6f8f9;
+  min-height: 100vh;
+  font-size: 16px;
+}
+
+.App-header {
+  position: fixed;
+  z-index: 0;
+  width: 1500px;
+  height: 600px;
+  color: white;
+  background: linear-gradient(0deg, rgba(18, 21, 34, 0.7),rgba(0, 0, 0, 0.2)), url(./assets/background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: 0, -14vw;
+  background-position-x: center;
 }
 
 .App-heading {
-  width: 100%;
+  text-shadow: 0 0 15px rgba(36, 35, 39, 0.4);
+  max-width: 1000px;
+  width: 80%;
+  margin: 30px auto;
+}
+
+.App-heading h1 {
+  font-size: 2rem;
+}
+
+.chevron {
+  position: fixed;
+  top: 550px;
+  height: 200px;
+  width: 1510px;
+}
+
+.chevron:before {
+  position: absolute;
+  content: '';
+  left: 0;
+  height: 100%;
+  width: 50%;
+  transform: skew(0deg, 5deg);
+  background-color: #f6f8f9;
+}
+.chevron:after {
+  position: absolute;
+  content: '';
+  right: 0;
+  height: 100%;
+  width: 50%;
+  transform: skew(0deg, -5deg);
+  background-color: #f6f8f9;
+}
+
+@media (max-width: 1500px) {
+  .App-header {
+    width: 100vw;
+    background-position-y: 0, -15vw;
+  }
+
+  .chevron {
+    width: 100vw;
+  }
+}
+
+@media (max-width: 1200px) {
+  .App-heading {
+    width: 80%;
+  }
+}
+
+@media (max-width: 1050px) {
+  .chevron {
+    top: 450px;
+  }
+}
+
+@media (max-width: 780px) {
+  .App {
+    font-size: 14px;
+  }
+
+  .App-heading {
+    width: 85%;
+  }
+}
+
+@media (max-width: 600px) {
+  .App-header {
+    height: 500px;
+    background-position-y: 0, -14vw;
+  }
+
+  .chevron {
+    top: 350px;
+  }
+
+  .App-heading {
+      width: 90%;
+  }
+
+  .App-heading h1 {
+    font-size: 1.8rem;
+  }
 }

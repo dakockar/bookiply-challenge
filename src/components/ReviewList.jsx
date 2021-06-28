@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setReviewList, filterByScore, filterByChannel } from '../app/reviewListSlice';
 import axios from 'axios';
-import Review from './Review';
+import { setReviewList, setMinScoreFilter, setChannelFilter, filterReviewList } from '../app/reviewListSlice';
 import "./ReviewList.css";
+import Review from './Review';
+import { Form } from 'react-bootstrap';
 
 
 function ReviewList() {
@@ -20,35 +21,45 @@ function ReviewList() {
             })
     }, [])
 
-    const handleFilterByScore = e => {
-        dispatch(filterByScore(e.target.value));
-    }
+    const handleFilter = e => {
+        switch (e.target.name) {
+            case "minScore": dispatch(setMinScoreFilter(e.target.value));
+                break;
+            case "channel": dispatch(setChannelFilter(e.target.value));
+                break;
+            default: return;
+        }
 
-    const handleFilterByChannel = e => {
-        dispatch(filterByChannel(e.target.value));
+        dispatch(filterReviewList());
     }
 
     return (
         <div className="ReviewList">
-            <form>
-                <label htmlFor="minScore">Filter By Score:</label>
-                <select name="minScore" id="minScore" onChange={handleFilterByScore}>
-                    <option value="all">All</option>
-                    <option value="5">5</option>
-                    <option value="4.5">4.5 & up</option>
-                    <option value="4">4 & up</option>
-                    <option value="3">3 & up</option>
-                    <option value="2">2 & up</option>
-                </select>
-                <label htmlFor="channel">Filter By Channel:</label>
-                <select name="channel" id="channel" onChange={handleFilterByChannel}>
-                    <option value="all">All</option>
-                    <option value="holidu">Holidu</option>
-                    <option value="airbnb">Airbnb</option>
-                    <option value="bookingcom">Booking.com</option>
-                </select>
-            </form>
-            <h2>{filteredReviewList.length} Reviews</h2>
+            <div className="ReviewList-header">
+                <h2>{filteredReviewList.length} Reviews</h2>
+                <Form className="ReviewList-Form">
+                    <Form.Group>
+                        <Form.Label htmlFor="minScore">Filter By Score</Form.Label>
+                        <Form.Control as="select" name="minScore" id="minScore" onChange={handleFilter}>
+                            <option value="0">All</option>
+                            <option value="5">5</option>
+                            <option value="4.5">4.5 & up</option>
+                            <option value="4">4 & up</option>
+                            <option value="3">3 & up</option>
+                            <option value="2">2 & up</option>
+                        </Form.Control>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label htmlFor="channel">Filter By Channel</Form.Label>
+                        <Form.Control as="select" name="channel" id="channel" onChange={handleFilter}>
+                            <option value="">All</option>
+                            <option value="holidu">Holidu</option>
+                            <option value="airbnb">Airbnb</option>
+                            <option value="bookingcom">Booking.com</option>
+                        </Form.Control>
+                    </Form.Group>
+                </Form>
+            </div>
             {
                 filteredReviewList.map((review, i) => {
                     return <Review review={review} key={i} />
@@ -56,7 +67,6 @@ function ReviewList() {
             }
         </div>
     );
-
 }
 
 export default ReviewList;
